@@ -1,20 +1,18 @@
 import * as React from "react";
-import { useState } from "react";
-// interface ITagInput {
-//   Array: string;
-// }
-export const TagInput = () => {
-  const [tags, setTag] = useState<string[]>([]);
-
+interface ITagInput {
+  tags: string[];
+  remakeTags: (arr: string[]) => void;
+}
+export const TagInput = ({ tags, remakeTags }: ITagInput) => {
   const addTag = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key !== "Enter") return;
     if (!e.currentTarget.value.trim()) return;
-    setTag([...tags, e.currentTarget.value]);
+    remakeTags([...tags, e.currentTarget.value]);
     e.currentTarget.value = "";
   };
 
   const delTag = (index: number) => {
-    setTag(tags.filter((item, i) => i != index));
+    remakeTags(tags.filter((_item, i) => i != index));
   };
   return (
     <div className="tags-container">
@@ -22,7 +20,7 @@ export const TagInput = () => {
         tags.map((tag, index) => (
           <div className="tags-item" key={index}>
             <span className="text">{tag}</span>
-            <span className="icon" onClick={()=>delTag(index)}>
+            <span className="icon" onClick={() => delTag(index)}>
               &times;
             </span>
           </div>
