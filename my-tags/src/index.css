@@ -4,12 +4,8 @@
   box-sizing: border-box;
 }
 
-body,
-html {
-  height: 100vh;
-}
-
 body {
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,7 +29,6 @@ body {
   padding: 3px 10px;
   border: 1px solid grey;
   border-radius: 20px;
-
 }
 .tags-item .icon {
   display: inline-flex;
